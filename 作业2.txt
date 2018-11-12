@@ -1,0 +1,48 @@
+mysql> use hahaha;
+Database changed
+create table film5(name varchar(10),type varchar(45),daoyan varchar(5),year int(10),pingfen float(5));
+Query OK, 0 rows affected (0.72 sec)
+ insert into film5(name,type,daoyan,year,pingfen)values('aj','keji,dongzuo','me',2018,8.6),('tongliying','aiqing,keji','you',2017,8.9),('tong','donghua,kongbu','he',2016,9.0);
+Query OK, 3 rows affected (0.20 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+mysql> select * from film5;
++------------+----------------+--------+------+---------+
+| name       | type           | daoyan | year | pingfen |
++------------+----------------+--------+------+---------+
+| aj         | keji,dongzuo   | me     | 2018 |     8.6 |
+| tongliying | aiqing,keji    | you    | 2017 |     8.9 |
+| tong  | donghua,kongbu | he     | 2016 |       9 |
++------------+----------------+--------+------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select * from film5 where type like '%keji%';
++------------+--------------+--------+------+---------+
+| name       | type         | daoyan | year | pingfen |
++------------+--------------+--------+------+---------+
+| aj         | keji,dongzuo | me     | 2018 |     8.6 |
+| tongliying | aiqing,keji  | you    | 2017 |     8.9 |
++------------+--------------+--------+------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from film5 where daoyan like '%you%';
++------------+-------------+--------+------+---------+
+| name       | type        | daoyan | year | pingfen |
++------------+-------------+--------+------+---------+
+| tongliying | aiqing,keji | you    | 2017 |     8.9 |
++------------+-------------+--------+------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from film5 where year like 2016;
++-----------+----------------+--------+------+---------+
+| name      | type           | daoyan | year | pingfen |
++-----------+----------------+--------+------+---------+
+| tong | donghua,kongbu | he     | 2016 |       9 |
++-----------+----------------+--------+------+---------+
+1 row in set (0.00 sec)
+mysql> select name ,max(pingfen) from film5;
++------+--------------+
+| name | max(pingfen) |
++------+--------------+
+| aj   |            9 |
++------+--------------+
+1 row in set (0.00 sec)
